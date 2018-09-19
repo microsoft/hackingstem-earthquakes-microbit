@@ -37,7 +37,6 @@ def readSensors():
     if sensorReading <= 3:
         sensorReading = 0
     sensorReading = sensorReading * 3
-    # TODO check scale factor against arduino version/workbook
     uart.write('{},'.format(sensorReading)+EOL)
     sleep(dataSpeed)
     sensorReading = -sensorReading
