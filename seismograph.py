@@ -20,7 +20,11 @@
 
 from microbit import *
 
+# Frequency of code looping
 dataSpeed = 75
+
+# End of Line Character
+EOL='\n'
 
 # Setup & Config
 display.off()  # Turns off LEDs to free up additional input pins
@@ -29,13 +33,15 @@ uart.init(baudrate=9600)  # Sets serial baud rate
 
 def readSensors():
     sensorReading = pin0.read_analog()
+    # Filter out low readings to 0
     if sensorReading <= 3:
         sensorReading = 0
-    sensorReading = sensorReading * 5  # TODO check scale factor against arduino version/workbook
-    print(sensorReading)
+    sensorReading = sensorReading * 3
+    # TODO check scale factor against arduino version/workbook
+    uart.write('{},'.format(sensorReading)+EOL)
     sleep(dataSpeed)
     sensorReading = -sensorReading
-    print(sensorReading)
+    uart.write('{},'.format(sensorReading)+EOL)
     sleep(dataSpeed)
 
 
