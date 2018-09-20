@@ -5,7 +5,7 @@
 # http://aka.ms/hackingSTEM
 #
 #  Overview:
-#  Uses of the micro:bit accelerometer to measure force along the Y axis
+#  Uses of the micro:bit accelerometer to measure g force along the Y axis
 #
 #  This project uses a BBC micro:bit microcontroller, information at:
 #  https://microbit.org/
@@ -27,11 +27,8 @@ SLEEP_INTERVAL_MILLIS = 1
 # End of line string
 EOL="\n"
 
-# The microbit analog scale
-DAC_POSITIVE_SCALE = 2048
-
-# Scale of accelerometer 
-ACCELEROMETER_GS = 8
+# The microbit analog scale factor for 8G
+SCALE_FACTOR_8G = 0.00390625
 
 # Constants for configuring accelerometer 
 ACCELEROMETER = 0x1d
@@ -54,11 +51,6 @@ def i2c_read_acc(register):
     # print('read: {}'.format(read_byte))
     return read_byte
 
-def convert_to_g(f):
-    """ Convert a reading from accelerometer into Gs """
-    return (f/DAC_POSITIVE_SCALE) * ACCELEROMETER_GS
-
-
 # Set up & config
 uart.init(baudrate=9600) # set serial data rate
 
@@ -72,5 +64,6 @@ uart.write(EOL+"0,"+EOL) # start with a clear line
 
 """ Main program loop """
 while (True):
-    uart.write('{},'.format((accelerometer.get_y()/1024)*8)+EOL)
+    # Multiply Y reading by SCALE_FACTOR for 8G
+    uart.write('{},'.format((accelerometer.get_y())*SCALE_FACTOR_8G)+EOL)
     sleep(SLEEP_INTERVAL_MILLIS)
