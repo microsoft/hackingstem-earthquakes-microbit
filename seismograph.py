@@ -1,10 +1,12 @@
 
 # ------------__ Hacking STEM – seismograph.py – micro:bit __-----------
-# For use with the
+# For use with the Using Computational Thinking to Understand Earthquakes
 # Lesson plan available from Microsoft Education Workshop at
 # http://aka.ms/hackingSTEM
 #
 #  Overview:
+#  This code reads an analog pin scales up the reading, and write to serial
+#  the reading in the opposite of the reading.
 #
 #  This project uses a BBC micro:bit microcontroller, information at:
 #  https://microbit.org/
