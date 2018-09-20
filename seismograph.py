@@ -17,7 +17,7 @@
 #
 #  Copyright 2018, Adi Azulay
 #  Microsoft EDU Workshop - HackingSTEM
-#  MIT License terms detailed in LICENSE.md
+#  MIT License terms detailed in LICENSE.txt
 # ===---------------------------------------------------------------===
 
 from microbit import *

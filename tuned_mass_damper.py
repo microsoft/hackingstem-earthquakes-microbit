@@ -1,7 +1,7 @@
 
 # ------------__ Hacking STEM – tuned_mass_damper.py – micro:bit __-----------
 # For use with the Using Computational Thinking to Understand Earthquakes
-# Lesson plan available from Microsoft Education Workshop at 
+# Lesson plan available from Microsoft Education Workshop at
 # http://aka.ms/hackingSTEM
 #
 #  Overview:
@@ -14,9 +14,9 @@
 #  requests are welcome! For source code and bug reports see:
 #  http://github.com/[TODO github path to Hacking STEM]
 #
-#  Copyright 2018, Jeremy Franklin-Ross 
+#  Copyright 2018, Jeremy Franklin-Ross
 #  Microsoft EDU Workshop - HackingSTEM
-#  MIT License terms detailed in LICENSE.md
+#  MIT License terms detailed in LICENSE.txt
 # ===---------------------------------------------------------------===
 
 from microbit import *
@@ -30,11 +30,11 @@ EOL="\n"
 # The microbit analog scale factor for 8G
 SCALE_FACTOR_8G = 0.00390625
 
-# Constants for configuring accelerometer 
+# Constants for configuring accelerometer
 ACCELEROMETER = 0x1d
 #ACC_2G = [0x0e, 0x00]  # not used, but useful reference
-#ACC_4G = [0x0e, 0x01]  # not used, but useful reference 
-ACC_8G = [0x0e, 0x02]   
+#ACC_4G = [0x0e, 0x01]  # not used, but useful reference
+ACC_8G = [0x0e, 0x02]
 CTRL_REG1_STANDBY = [0x2a, 0x00]
 CTRL_REG_1_ACTIVE = [0x2a, 0x01]
 XYZ_DATA_CFG = [0x0e]   # not used but useful reference
