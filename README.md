@@ -4,7 +4,7 @@ Micro:bit code for Microsoft Hacking Using Computational Thinking to Understand 
 # Getting Started
 1. Download lesson assets at http://aka.ms/hackingSTEM
 1. Build your Seismometer or Tuned Mass Damper  !
-1. Use [Mu](https://codewith.mu/) to the .ino to your [micro:bit](http://microbit.org/) microcontroller
+1. Use [Mu](https://codewith.mu/) to flash the code to your [micro:bit](http://microbit.org/) microcontroller
 1. Verify data interactions in Excel
 1. Ready, Set, Science!
 
