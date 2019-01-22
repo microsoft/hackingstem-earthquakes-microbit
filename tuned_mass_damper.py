@@ -21,46 +21,50 @@
 
 from microbit import *
 
+# The microbit analog scale factor for 8G
+SCALE_FACTOR_8G = 0.00390625
+
+def command(a, c):
+    """ send command to accelerometer """
+    i2c.write(a, bytearray(c))
+
+def i2c_read(a, register):
+    """ read accelerometer register """
+    i2c.write(a, bytearray(register), repeat=True)
+    read_byte = i2c.read(a, 1)
+    return read_byte
+
+# Detect accelerometer variant and configure accelerometer to 8G
+MMA8653_ACCEL = 0x1d
+LSM303_ACCEL = 0x19 
+FXOS8700_ACCEL = 0x1E 
+
+i2c_addresses = i2c.scan()
+
+if (MMA8653_ACCEL in i2c_addresses and 
+		i2c_read(MMA8653_ACCEL, [0x0D]) == bytes([0x5A])):
+	command(MMA8653_ACCEL, [0x2a, 0x00]) # STAND BY
+	command(MMA8653_ACCEL, [0x0e, 0x02]) # SET 8G
+	command(MMA8653_ACCEL, [0x2a, 0x01]) # ACTIVE
+elif (LSM303_ACCEL in i2c_addresses and
+		i2c_read(LSM303_ACCEL, [0x0F]) == bytes([0x33])):
+	command(LSM303_ACCEL, [0x23, 0x80 |  0x20 ]) #SET 8G
+elif (FXOS8700_ACCEL in i2c_addresses and
+		i2c_read(FXOS8700_ACCEL, [0x0D]) == bytes([0xC7])):
+	command(FXOS8700_ACCEL, [0x0E, 0x2]) # UNTESTED! SET 8G
+else:
+	while True:
+		display.scroll("Unsupported microbit model", delay=90, loop=True)
+
 # loop interval
 SLEEP_INTERVAL_MILLIS = 1
 
 # End of line string
 EOL="\n"
 
-# The microbit analog scale factor for 8G
-SCALE_FACTOR_8G = 0.00390625
-
-# Constants for configuring accelerometer
-ACCELEROMETER = 0x1d
-#ACC_2G = [0x0e, 0x00]  # not used, but useful reference
-#ACC_4G = [0x0e, 0x01]  # not used, but useful reference
-ACC_8G = [0x0e, 0x02]
-CTRL_REG1_STANDBY = [0x2a, 0x00]
-CTRL_REG_1_ACTIVE = [0x2a, 0x01]
-XYZ_DATA_CFG = [0x0e]   # not used but useful reference
-
-def command(c):
-    """ send command to accelerometer """
-    i2c.write(ACCELEROMETER, bytearray(c))
-
-def i2c_read_acc(register):
-    """ read accelerometer register """
-    i2c.write(ACCELEROMETER, bytearray(register), repeat=True)
-    read_byte = i2c.read(ACCELEROMETER, 1)
-    # debug:
-    # print('read: {}'.format(read_byte))
-    return read_byte
-
 # Set up & config
 uart.init(baudrate=9600) # set serial data rate
-
-# Configure accelerometer to 4G
-command(CTRL_REG1_STANDBY)
-command(ACC_8G)
-command(CTRL_REG_1_ACTIVE)
-
 uart.write(EOL+"0,"+EOL) # start with a clear line
-
 
 """ Main program loop """
 while (True):
