@@ -2,7 +2,7 @@
 Microcontroller code for Microsoft Hacking Using Computational Thinking to Understand Earthquakes Lesson Plan adapted for micro:bit
 
 # Getting Started
-1. Download lesson assets at https://www.microsoft.com/en-us/education/education-workshop/seismograph.aspx
+1. Download lesson assets at https://education.microsoft.com/hackingStem/lesson/088ef496
 1. Build your Seismometer or Tuned Mass Damper!
 1. Use [Mu](https://codewith.mu/) to flash the code to your [micro:bit](http://microbit.org/) microcontroller
 1. Verify data interactions in Excel

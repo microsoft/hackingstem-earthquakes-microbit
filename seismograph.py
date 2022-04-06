@@ -2,6 +2,7 @@
 # ------------__ Hacking STEM – seismograph.py – micro:bit __-----------
 # For use with the Using Computational Thinking to Understand Earthquakes
 # Lesson plan available from Microsoft Education Workshop at
+# https://education.microsoft.com/hackingStem/lesson/088ef496
 # http://aka.ms/hackingSTEM
 #
 #  Overview:

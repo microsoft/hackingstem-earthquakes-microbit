@@ -2,7 +2,7 @@
 # ------------__ Hacking STEM – tuned_mass_damper.py – micro:bit __-----------
 # For use with the Using Computational Thinking to Understand Earthquakes
 # Lesson plan available from Microsoft Education Workshop at
-# https://www.microsoft.com/en-us/education/education-workshop/seismograph.aspx
+# https://education.microsoft.com/hackingStem/lesson/088ef496
 # http://aka.ms/hackingSTEM
 #
 #  Overview:
